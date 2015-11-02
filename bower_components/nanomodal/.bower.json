@@ -1,0 +1,35 @@
+{
+  "name": "nanomodal",
+  "version": "5.1.2",
+  "homepage": "https://github.com/kylepaulsen/NanoModal",
+  "authors": [
+    "Kyle Paulsen <kyle.a.paulsen@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kylepaulsen/NanoModal.git"
+  },
+  "dependencies": {},
+  "description": "A small, self-contained JavaScript modal library with some extra features",
+  "main": "nanomodal.min.js",
+  "keywords": [
+    "modal"
+  ],
+  "license": "MIT",
+  "ignore": [
+    ".*",
+    "node_modules",
+    "test",
+    "src"
+  ],
+  "_release": "5.1.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v5.1.2",
+    "commit": "24e2c614604bf0348bfbb2992e733aa6a9840023"
+  },
+  "_source": "git://github.com/kylepaulsen/NanoModal.git",
+  "_target": "~5.1.2",
+  "_originalSource": "nanomodal",
+  "_direct": true
+}

@@ -1,0 +1,30 @@
+{
+  "author": "One Agency",
+  "name": "profacts-js-consult",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Clean Popup project",
+  "devDependencies": {
+    "browser-sync": "^2.9.11",
+    "coffee-script": "^1.9.3",
+    "gulp": "^3.9.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-jsmin": "^0.1.5",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.3",
+    "gulp-scss-lint": "^0.2.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-util": "^3.0.6",
+    "node-bourbon": "^4.2.3",
+    "node-neat": "^1.7.2",
+    "node-normalize-scss": "^1.0.3",
+    "node-sass-json-importer": "^1.0.2",
+    "matchdep": "*"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}

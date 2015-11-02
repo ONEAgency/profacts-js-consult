@@ -1,0 +1,29 @@
+{
+  "name": "profacts-modal",
+  "description": "This package contains a custom cookie based popup modal window that can be used to launch a modal window based on configurated settings",
+  "main": "dist/modal.min.js",
+  "authors": [
+    "One Agency"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "javascript",
+    "bower",
+    "popup",
+    "modal"
+  ],
+  "moduleType": [],
+  "homepage": "http://gitlab.crosscheck.be/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "font-awesome": "~4.4.0",
+    "nanomodal": "~5.1.2"
+  }
+}

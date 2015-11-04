@@ -1,7 +1,7 @@
 {
   "name": "profacts-modal",
   "description": "This package contains a custom cookie based popup modal window that can be used to launch a modal window based on configurated settings",
-  "main": "dist/modal.min.js",
+  "main": "dist/profacts-modal.min.js",
   "authors": [
     "One Agency"
   ],

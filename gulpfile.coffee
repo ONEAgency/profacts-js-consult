@@ -11,6 +11,7 @@ browserSync = require("browser-sync").create()
 # JS
 coffee = require "gulp-coffee"
 jsmin = require "gulp-jsmin"
+jst = require "gulp-jst"
 
 # SCSS
 sass = require "gulp-sass"
@@ -37,8 +38,8 @@ paths =
 gulp_src = gulp.src
 gulp.src = ->
   gulp_src.apply(gulp, arguments).pipe plumber (error) ->
-    gutil.log gutil.colors.red('Error (' + error.plugin + '): ' + error.message)
-    @emit 'end'
+    gutil.log gutil.colors.red("Error (#{error.plugin}):  + #{error.message}")
+    @emit "end"
 
 # -------------------------------------------------
 # TASKS
@@ -66,7 +67,7 @@ gulp.task "scss", ->
 gulp.task "scss-lint", ->
   gulp.src paths.scss
   .pipe scsslint({
-    'maxBuffer': 999999
+    "maxBuffer": 999999
   })
 
 gulp.task "coffee", ->
@@ -74,12 +75,17 @@ gulp.task "coffee", ->
   .pipe coffee()
   .pipe gulp.dest paths.js
 
+gulp.task "jst", ->
+  gulp.src "src/templates/*.html"
+    .pipe jst()
+    .pipe gulp.dest "./dist/js"
+
 gulp.task "minify-css", ->
   gulp.src paths.cssfiles
     .pipe sourcemaps.init()
     .pipe concat "app.css"
     .pipe minifyCss()
-    .pipe rename {suffix: '.min'}
+    .pipe rename {suffix: ".min"}
     .pipe gulp.dest paths.css
 
 gulp.task "minify-js", ->
@@ -87,7 +93,7 @@ gulp.task "minify-js", ->
     .pipe sourcemaps.init()
     .pipe concat "app.js"
     .pipe jsmin()
-    .pipe rename {suffix: '.min'}
+    .pipe rename {suffix: ".min"}
     .pipe sourcemaps.write()
     .pipe gulp.dest paths.js
 
@@ -109,6 +115,7 @@ gulp.task "browser-sync", ->
 gulp.task "default", [
   "coffee"
   "scss"
+  "jst"
   #"minify-css"
   #"minify-js"
   "watch"

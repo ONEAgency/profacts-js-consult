@@ -11,6 +11,7 @@
     "gulp-coffee": "^2.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-jsmin": "^0.1.5",
+    "gulp-jst": "^0.1.1",
     "gulp-minify-css": "^1.2.1",
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
@@ -18,11 +19,11 @@
     "gulp-scss-lint": "^0.2.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-util": "^3.0.6",
+    "matchdep": "*",
     "node-bourbon": "^4.2.3",
     "node-neat": "^1.7.2",
     "node-normalize-scss": "^1.0.3",
-    "node-sass-json-importer": "^1.0.2",
-    "matchdep": "*"
+    "node-sass-json-importer": "^1.0.2"
   },
   "engines": {
     "node": ">=0.8.0"

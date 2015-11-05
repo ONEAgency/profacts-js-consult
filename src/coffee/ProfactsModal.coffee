@@ -12,7 +12,7 @@ module.exports = class ProfactsModal
       @showratio = 100 # 100 percent chance of showing
       @expireratio = 0 # when popup is shown it will show again in 0hs
 
-      @campaignkey = "profactscampaign"
+      @campaignkey = "profactscampaign" #this is the key that will be used to create
       @templategroupname = "profactsmodaltemplates"
       @templatename = "popup_1"
     } = options

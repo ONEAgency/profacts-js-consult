@@ -94,6 +94,37 @@
       <p>This is the name of the html file that you can find in the <i>src/templates</i> folder, say for example you want to make a different popup with other content. Then you add your template in that directory run <strong>gulp js</strong>, and you can access the template by changing this key to the name of your template. Then you will have your new content in your popup.</p>
       <blockquote><a>Info: </a> But beware, there are 2 things that are needed internally by the code, first one is the buttons with the classes <strong>button-accept</strong> and <strong>button-decline</strong>. And the second one is the overlay div with it's class <strong>overlay</strong>. The rest is customizable.</blockquote>
 
+      <p>This is the default template</p>
+      <pre><code>&lt;link rel="stylesheet" href="dist/css/template-styles.css"&gt;
+&lt;div class="overlay"&gt;&lt;/div&gt;
+&lt;div class="modal-box-content"&gt;
+  &lt;header&gt;
+    &lt;div class="gradient"&gt;&lt;/div&gt;
+    &lt;h1&gt;Deel uw mening en win!&lt;/h1&gt;
+  &lt;/header&gt;
+
+  &lt;section&gt;
+    &lt;p&gt;Als bezoeker aan onze website willen wij graag uw mening weten over Acerta als potentiële werkgever.&lt;/p&gt;
+    &lt;p&gt;Deelnemen neemt slecht 10-15 minuten in beslag en alle gegevens blijven volledig vertrouwelijk.&lt;/p&gt;
+    &lt;p&gt;Bovendien maakt u dan kans op één van onze fantastische prijzen! &lt;/p&gt;
+
+    &lt;div class="buttons tac"&gt;
+      &lt;a href="#" class="button button-accept"&gt;Ik neem deel&lt;/a&gt;
+      &lt;a href="#" class="button button-decline"&gt;Nu niet&lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;div class="grid-2 mobile"&gt;
+      &lt;div class="tac"&gt;
+        &lt;img src="dist/img/acerta.png" alt="Acerta" class="logo"&gt;
+      &lt;/div&gt;
+
+      &lt;div class="tac"&gt;
+        &lt;img src="dist/img/profacts.png" alt="Profacts" class="logo"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+</code></pre>
       <hr>
 
       <h3>About the Styling (scss):</h3>

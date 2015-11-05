@@ -33,6 +33,16 @@
 
       <pre><code>npm install profacts-js-consult</code></pre>
       <br>
+
+      <hr>
+      <h2>Requirements:</h2>
+      <p>
+        If you want to change the code, add templates or restyle the pupup. You must have node installed.
+        This can be done by <strong>brew install node</strong> or see the node homepage for other ways.
+        When you have node and npm you must install 2 global packages.
+        <pre><code>npm install -g coffee-script gulp</code></pre>
+      </p>
+  <br>
       <hr>
       <h2>Demo</h2>
       <p>
@@ -104,7 +114,7 @@
       <blockquote><a>Info: </a> But beware, there are 2 things that are needed internally by the code, first one is the buttons with the classes <strong>button-accept</strong> and <strong>button-decline</strong>. And the second one is the overlay div with it's class <strong>overlay</strong>. The rest is customizable.</blockquote>
 
       <p>This is the default template</p>
-      <pre><code>&lt;link rel="stylesheet" href="dist/css/template-styles.css"&gt;
+      <pre><code>&lt;link rel="stylesheet" href="https://raw.githubusercontent.com/ONEAgency/profacts-js-consult/master/dist/css/template-styles.css"&gt;
 &lt;div class="overlay"&gt;&lt;/div&gt;
 &lt;div class="modal-box-content"&gt;
   &lt;header&gt;
@@ -140,6 +150,11 @@
       <p>
         Everything is compiled with <strong>gulp</strong> into the css folder, this can be altered and you can create extra files that you can use in your new templates. For example: you can duplicate the <i>template-styles.scss</i> file and rename it to <i>template2.scss</i> and then change the <i>@import "layout/template";</i> line to another file with the scss for the second popup. Or you can link up a css file that is on a cdn in your template, it is really up to you.
       </p>
+
+      <blockquote>
+        <a>Info: </a> The location of the css can be altered this is <a>https://raw.githubusercontent.com/ONEAgency/profacts-js-consult/master/dist/css/template-styles.css</a>right now
+      </blockquote>
+
       <footer class="site-footer">
         <span class="site-footer-owner">
           <a href="https://github.com/ONEAgency/profacts-js-consult">Profacts-js-consult</a> is maintained by <a href="https://github.com/ONEAgency">ONEAgency</a>.

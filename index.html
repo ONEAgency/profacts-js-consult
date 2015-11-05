@@ -36,11 +36,67 @@
       <h2>Demo</h2>
       <p>
         You can view a basic demo <a href="example.html">here</a>.
-        The settings that were used to generate the popup can be found below.
+        The settings that were used to generate the popup on the demo page can be found below.
       </p>
 
-      <pre><code><script id="profacts-modal" type="text/javascript" src="dist/js/modal.js?campaignkey=profactscampaign&startdate=2015-11-05T09:00:00&enddate=2015-11-06T09:43:30&showratio=100&expireratio=1h&templategroupname=profactsmodaltemplates&templatename=popup_1"></script></code></pre>
+      <pre><code><a>id</a>="profacts-modal" type="text/javascript" src="dist/js/modal.js?<a>campaignkey</a>=profactscampaign
+&<a>startdate</a>=2015-11-05T09:00:00&<a>enddate</a>=2015-11-06T09:43:30&<a>showratio</a>=100&<a>expireratio</a>=1h
+&<a>templategroupname</a>=profactsmodaltemplates&<a>templatename</a>=popup_1"</code></pre>
 
+      <h2>Documentation</h2>
+      <p>
+        As you can see the script can take a number of settings that can be used to configure the behaviour of the modal popup window.
+        Let's start with the complete list of settings that can be used.
+      </p>
+
+      <h3>Parameter list:</h3>
+
+      <p><strong>campaignkey</strong>: defaults to <i>profactscampaign</i></p>
+      <p>This key acts as a unique identifier for setting the cookies of the modal window, when a campaign ends and another popup is provided this key must be changed in order to avoid cookie collisions.</p>
+
+      <hr>
+
+      <p><strong>startdate</strong>: defaults to <i>2015-01-01T0:00:01</i></p>
+      <p>The modal popup will be shown from this date on until the enddate parameter</p>
+
+      <hr>
+
+      <p><strong>enddate</strong>: defaults to <i>2016-01-01T0:00:01</i></p>
+      <p>The modal popup will be shown until this date.</p>
+      <blockquote><a>Info: </a>The enddate parameter is also used to set the accepted cookies expire date for when the user has clicked the accept button.</blockquote>
+
+      <hr>
+
+      <p><strong>showratio</strong>: defaults to <i>100</i></p>
+      <p>This is the ratio at which the popup is shown, if this is 50 for example the pop up can be shown at the chance of 1/2.</p>
+      <p>This setting can be used in conjunction with the <strong>expireratio</strong> setting, but <strong>beware</strong> when you combine them the behavior can be unexpected. </p>
+      <p>But normaly you would never use these 2 combined, it's either based on the expireratio or based on the showratio.</p>
+      <p>Thats is why the defaults of these two are set properly.</p>
+
+      <hr>
+
+      <p><strong>expireratio</strong>: defaults to <i>0</i></p>
+      <p>This is the ratio at which the popup is shown based on a cookie setting, when the popup has opened this cookie is set if it is not 0.</p>
+      <p>The expire date of the cookie can be set in hours or in minutes by providing the suffixes <strong>m</strong> or <strong>h</strong></p>
+      <blockquote><a>Info: </a>So 2h means that the pupup will reappear after 2 hours unless the user has clicked the accept button naturally.</blockquote>
+      <blockquote>2m means that the pupup will reappear after 2 minutes unless the user has clicked the accept button naturally.</blockquote>
+
+      <hr>
+
+      <p><strong>templategroupname</strong>: defaults to <i>profactsmodaltemplates</i></p>
+      <p>This is an extra setting for the templates, you can use this setting to create more templates and bind them to a different key.</p>
+      <blockquote><a>Info: </a> This setting is not that important and can be pretty much ignored.</blockquote>
+
+      <hr>
+
+      <p><strong>templatename</strong>: defaults to <i>popup_1</i></p>
+      <p>This key is used to get the contents of the popup modal that is compiled into <i>dist/js/templates.js</i>.</p>
+      <p>This is the name of the html file that you can find in the <i>src/templates</i> folder, say for example you want to make a different popup with other content. Then you add your template in that directory run <strong>gulp js</strong>, and you can access the template by changing this key to the name of your template. Then you will have your new content in your popup.</p>
+      <blockquote><a>Info: </a> But beware, there are 2 things that are needed internally by the code, first one is the buttons with the classes <strong>button-accept</strong> and <strong>button-decline</strong>. And the second one is the overlay div with it's class <strong>overlay</strong>. The rest is customizable.</blockquote>
+
+      <hr>
+
+      <h3>About the Styling (scss):</h3>
 
       <footer class="site-footer">
         <span class="site-footer-owner">

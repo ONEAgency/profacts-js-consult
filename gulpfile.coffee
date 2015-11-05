@@ -134,7 +134,7 @@ gulp.task "watch", ->
 gulp.task "browser-sync", ->
   browserSync.init
     server: "./"
-    startPath: "dist/example.html"
+    startPath: "example.html"
 
 
 # DEFAULT

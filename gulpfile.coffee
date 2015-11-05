@@ -49,6 +49,7 @@ gulp.task "scss", ->
   gulp.src paths.scss
   .pipe sourcemaps.init()
   .pipe sass
+    outputStyle: "compressed"
     includePaths: [
       require("node-bourbon").includePaths
       require("node-neat").includePaths[1]
@@ -87,6 +88,8 @@ gulp.task "coffee", ->
 gulp.task "makemodal", ->
   gulp.src ["dist/js/templates.js", "dist/js/ProfactsModal.js", "dist/js/execute.js"]
   .pipe concat "modal.js"
+  .pipe jsmin()
+  .pipe rename {suffix: ".min"}
   .pipe gulp.dest paths.js
 
 gulp.task "jst", ->
@@ -105,23 +108,6 @@ gulp.task "js", ->
     "coffee"
     "makemodal"
   )
-
-gulp.task "minify-css", ->
-  gulp.src paths.cssfiles
-    .pipe sourcemaps.init()
-    .pipe concat "app.css"
-    .pipe minifyCss()
-    .pipe rename {suffix: ".min"}
-    .pipe gulp.dest paths.css
-
-gulp.task "minify-js", ->
-  gulp.src paths.jsfiles
-    .pipe sourcemaps.init()
-    .pipe concat "app.js"
-    .pipe jsmin()
-    .pipe rename {suffix: ".min"}
-    .pipe sourcemaps.write()
-    .pipe gulp.dest paths.js
 
 # -------------------------------------------------
 # GROUPED TASKS2

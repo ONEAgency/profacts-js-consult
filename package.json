@@ -3,7 +3,7 @@
   "name": "profacts-js-consult",
   "version": "0.0.1",
   "description": "Clean Popup project",
-  "devDependencies": {
+  "dependencies": {
     "browser-cookies": "^1.0.8",
     "browser-sync": "^2.9.11",
     "coffee-script": "^1.9.3",

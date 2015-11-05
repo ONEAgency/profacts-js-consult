@@ -12,6 +12,8 @@ module.exports = class ProfactsModal
       @showratio = 100 # 100 percent chance of showing
       @expireratio = 0 # when popup is shown it will show again in 0hs
 
+      @hideafteraccept = false
+
       @campaignkey = "profactscampaign" #this is the key that will be used to create
       @templategroupname = "profactsmodaltemplates"
       @templatename = "popup_1"
@@ -20,8 +22,6 @@ module.exports = class ProfactsModal
   init: () ->
     do @handleRequestParams
     @inrange = @checkDate(@getRequestParram("startdate"), @getRequestParram("enddate"))
-    console.log "the range of popup show is: #{@inrange}"
-
     if @inrange
       do @makePopup
       @shouldshowbyratio = @checkShowRatio(@getRequestParram("showratio"))
@@ -69,9 +69,10 @@ module.exports = class ProfactsModal
     document.querySelector('#modal-wrapper .button-accept').addEventListener 'click', =>
       if document.querySelector('#modal-wrapper').classList.contains('shown')
         cookies.set("#{@getRequestParram("campaignkey")}_accepted", "true",
-          expires: @addHours(new Date(end), @getTimeZone())
+          expires: @addHours(new Date(@getRequestParram("enddate")), @getTimeZone())
         )
-        @hidePopup()
+        if @getRequestParram("hideafteraccept") is "true"
+          @hidePopup()
 
     document.querySelector('#modal-wrapper .button-decline').addEventListener 'click', =>
       if document.querySelector('#modal-wrapper').classList.contains('shown')
@@ -118,12 +119,10 @@ module.exports = class ProfactsModal
 
   getRequestParram: (key)->
     unless @reqparams[key]?
-      console.log @[key]
       if key is "campaignkey" and @[key] is "profactscampaign"
         console.log "WARNING: every campaign should have a campaignkey. This key is used to create the modal cookies."
       return @[key]
     else
-      console.log @reqparams[key]
       return @reqparams[key]
 
   handleRequestParams: () ->

@@ -1,0 +1,7 @@
+// ====================================================================================================== //
+// TYPOGRAPHY.SCSS //
+// This file contains all typography styling: body, h1..6, p, li, a, blockquote, etc.
+// ====================================================================================================== //
+
+@include font-face("arial-rounded-regular", "../font/ArialRoundedMTBold");
+$arial-rounded: "arial-rounded";

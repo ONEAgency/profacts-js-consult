@@ -1,0 +1,17 @@
+// Set true to set the global box-sizing to border-box.
+$default-border-box: false !default;
+$default-lighten-ratio: 10%;
+
+// Set true to use font smoothing
+$default-font-smoothing: false !default;
+
+// Set true to disable the outlines
+$default-disable-outline: false !default;
+
+// Set true to clean menu's of margins and paddings
+$default-clean-menus: false !default;
+
+// Default values
+$default-border-radius: 10px !default;
+$default-border-width: 3px !default;
+$rem-with-px-fallback: false;

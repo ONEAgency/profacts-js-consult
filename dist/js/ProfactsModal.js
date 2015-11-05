@@ -154,14 +154,13 @@ src = document.getElementById('profacts-modal').src.split(".js")[1];
 
 module.exports = ProfactsModal = (function() {
   function ProfactsModal(options) {
-    var ref, ref1, ref2, ref3, ref4, ref5, ref6;
-    this.startdate = (ref = options.startdate) != null ? ref : "2015-01-01T0:00:01", this.enddate = (ref1 = options.enddate) != null ? ref1 : "2016-01-01T0:00:01", this.showratio = (ref2 = options.showratio) != null ? ref2 : 100, this.expireratio = (ref3 = options.expireratio) != null ? ref3 : 0, this.campaignkey = (ref4 = options.campaignkey) != null ? ref4 : "profactscampaign", this.templategroupname = (ref5 = options.templategroupname) != null ? ref5 : "profactsmodaltemplates", this.templatename = (ref6 = options.templatename) != null ? ref6 : "popup_1";
+    var ref, ref1, ref2, ref3, ref4, ref5, ref6, ref7;
+    this.startdate = (ref = options.startdate) != null ? ref : "2015-01-01T0:00:01", this.enddate = (ref1 = options.enddate) != null ? ref1 : "2016-01-01T0:00:01", this.showratio = (ref2 = options.showratio) != null ? ref2 : 100, this.expireratio = (ref3 = options.expireratio) != null ? ref3 : 0, this.hideafteraccept = (ref4 = options.hideafteraccept) != null ? ref4 : false, this.campaignkey = (ref5 = options.campaignkey) != null ? ref5 : "profactscampaign", this.templategroupname = (ref6 = options.templategroupname) != null ? ref6 : "profactsmodaltemplates", this.templatename = (ref7 = options.templatename) != null ? ref7 : "popup_1";
   }
 
   ProfactsModal.prototype.init = function() {
     this.handleRequestParams();
     this.inrange = this.checkDate(this.getRequestParram("startdate"), this.getRequestParram("enddate"));
-    console.log("the range of popup show is: " + this.inrange);
     if (this.inrange) {
       this.makePopup();
       this.shouldshowbyratio = this.checkShowRatio(this.getRequestParram("showratio"));
@@ -218,9 +217,11 @@ module.exports = ProfactsModal = (function() {
       return function() {
         if (document.querySelector('#modal-wrapper').classList.contains('shown')) {
           cookies.set((_this.getRequestParram("campaignkey")) + "_accepted", "true", {
-            expires: _this.addHours(new Date(end), _this.getTimeZone())
+            expires: _this.addHours(new Date(_this.getRequestParram("enddate")), _this.getTimeZone())
           });
-          return _this.hidePopup();
+          if (_this.getRequestParram("hideafteraccept") === "true") {
+            return _this.hidePopup();
+          }
         }
       };
     })(this));
@@ -291,13 +292,11 @@ module.exports = ProfactsModal = (function() {
 
   ProfactsModal.prototype.getRequestParram = function(key) {
     if (this.reqparams[key] == null) {
-      console.log(this[key]);
       if (key === "campaignkey" && this[key] === "profactscampaign") {
         console.log("WARNING: every campaign should have a campaignkey. This key is used to create the modal cookies.");
       }
       return this[key];
     } else {
-      console.log(this.reqparams[key]);
       return this.reqparams[key];
     }
   };

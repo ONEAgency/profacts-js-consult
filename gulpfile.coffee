@@ -14,7 +14,8 @@ coffee = require "gulp-coffee"
 jsmin = require "gulp-jsmin"
 template = require "gulp-template-compile"
 browserify = require "gulp-browserify"
-cssToJs = require "gulp-css-to-js"
+#cssToJs = require "gulp-css-to-js"
+
 # SCSS
 sass = require "gulp-sass"
 sourcemaps = require "gulp-sourcemaps"

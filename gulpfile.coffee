@@ -49,7 +49,7 @@ gulp.task "scss", ->
   gulp.src paths.scss
   .pipe sourcemaps.init()
   .pipe sass
-    style: "compressed"
+    outputStyle: "compressed"
     includePaths: [
       require("node-bourbon").includePaths
       require("node-neat").includePaths[1]

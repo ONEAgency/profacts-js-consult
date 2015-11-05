@@ -7,12 +7,14 @@ gutil = require "gulp-util"
 plumber = require "gulp-plumber"
 concat = require "gulp-concat"
 browserSync = require("browser-sync").create()
+runSequence = require "run-sequence"
 
 # JS
 coffee = require "gulp-coffee"
 jsmin = require "gulp-jsmin"
-jst = require "gulp-jst"
-
+template = require "gulp-template-compile"
+browserify = require "gulp-browserify"
+cssToJs = require "gulp-css-to-js"
 # SCSS
 sass = require "gulp-sass"
 sourcemaps = require "gulp-sourcemaps"
@@ -30,7 +32,7 @@ paths =
   scss: "./src/scss/**/*.scss"
   css: "./dist/css"
   cssfiles: []
-  coffee: "./src/coffee/**/*.coffee"
+  coffee: ["./src/coffee/**/*.coffee", "./src/coffee/*.coffee"]
   js: "./dist/js"
   jsfiles: []
   bower: "bower_components/"
@@ -70,15 +72,41 @@ gulp.task "scss-lint", ->
     "maxBuffer": 999999
   })
 
-gulp.task "coffee", ->
-  gulp.src paths.coffee
+gulp.task "compileexecute", ->
+  gulp.src "src/coffee/execute.coffee"
   .pipe coffee()
+  .pipe gulp.dest paths.js
+
+gulp.task "coffee", ->
+  gulp.src "src/coffee/ProfactsModal.coffee" , read: false
+  .pipe browserify
+    standalone: "ProfactsModal"
+    transform: [ "coffeeify" ]
+    extensions: [ ".coffee" ]
+  .pipe rename "ProfactsModal.js"
+  .pipe gulp.dest paths.js
+
+gulp.task "makemodal", ->
+  gulp.src ["dist/js/templates.js", "dist/js/ProfactsModal.js", "dist/js/execute.js"]
+  .pipe concat "modal.js"
   .pipe gulp.dest paths.js
 
 gulp.task "jst", ->
   gulp.src "src/templates/*.html"
-    .pipe jst()
+    .pipe template(
+      name: (file) -> file.relative.split(".")[0]
+      namespace: "profactsmodaltemplates"
+    )
+    .pipe concat "templates.js"
     .pipe gulp.dest "./dist/js"
+
+gulp.task "js", ->
+  runSequence(
+    "jst"
+    "compileexecute"
+    "coffee"
+    "makemodal"
+  )
 
 gulp.task "minify-css", ->
   gulp.src paths.cssfiles
@@ -103,19 +131,19 @@ gulp.task "minify-js", ->
 # WATCH
 gulp.task "watch", ->
   gulp.watch paths.scss, ["scss"]
-  #gulp.watch paths.coffee, ["coffee"]
+  gulp.watch paths.coffee, ["js"]
 
 gulp.task "browser-sync", ->
   browserSync.init
     server: "./dist"
-    startPath: "template.html"
+    startPath: "example.html"
 
 
 # DEFAULT
 gulp.task "default", [
   "coffee"
   "scss"
-  "jst"
+  "js"
   #"minify-css"
   #"minify-js"
   "watch"

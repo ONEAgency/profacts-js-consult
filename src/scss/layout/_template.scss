@@ -2,9 +2,9 @@
 // TEMPLATE.SCSS //
 // This file contains the styling for the initial template that sits in the modal window
 // ====================================================================================================== //
-#modal-box-content {
+.modal-box-content {
   background-color: mg($colors, white);
-
+  // max-width: 300px;
 
   .gradient {
     @include rect(100%, 20px);
@@ -61,10 +61,6 @@
         &:hover {
           background-color: lighten(#ed519b, $default-lighten-ratio);
         }
-      }
-
-      &:hover {
-        padding: 7px 12px;
       }
     }
   }

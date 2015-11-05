@@ -35,7 +35,6 @@ paths =
   coffee: ["./src/coffee/**/*.coffee", "./src/coffee/*.coffee"]
   js: "./dist/js"
   jsfiles: []
-  bower: "bower_components/"
 
 gulp_src = gulp.src
 gulp.src = ->
@@ -54,7 +53,6 @@ gulp.task "scss", ->
       require("node-bourbon").includePaths
       require("node-neat").includePaths[1]
       require("node-normalize-scss").includePaths
-      "#{paths.bower}font-awesome/scss"
     ]
     importer: jsonImporter
   .on "error", (err) ->

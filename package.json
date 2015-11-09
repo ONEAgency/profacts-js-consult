@@ -1,7 +1,7 @@
 {
   "author": "One Agency",
   "name": "profacts-js-consult",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Clean Popup project",
   "dependencies": {
     "browser-cookies": "^1.0.8",

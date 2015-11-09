@@ -87,8 +87,12 @@ gulp.task "coffee", ->
   .pipe gulp.dest paths.js
 
 gulp.task "makemodal", ->
-  gulp.src ["dist/js/templates.js", "dist/js/ProfactsModal.js", "dist/js/execute.js"]
+  gulp.src ["node_modules/underscore/underscore-min.js", "dist/js/templates.js", "dist/js/ProfactsModal.js", "dist/js/execute.js"]
   .pipe concat "modal.js"
+  .pipe gulp.dest paths.js
+
+gulp.task "minify", ->
+  gulp.src "modal.js"
   .pipe jsmin()
   .pipe rename {suffix: ".min"}
   .pipe gulp.dest paths.js
@@ -108,6 +112,7 @@ gulp.task "js", ->
     "compileexecute"
     "coffee"
     "makemodal"
+    "minify"
   )
 
 # -------------------------------------------------

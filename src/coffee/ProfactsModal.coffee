@@ -1,6 +1,5 @@
 queryString = require "query-string"
 cookies = require "browser-cookies"
-
 src = document.getElementById('profacts-modal').src.split(".js")[1];
 
 module.exports = class ProfactsModal
@@ -38,7 +37,7 @@ module.exports = class ProfactsModal
     template = @getTemplate()
     @wrapper = document.createElement "div"
     @wrapper.id = "modal-wrapper"
-    @wrapper.innerHTML = @template()
+    @wrapper.innerHTML = @template({accepturl: @getRequestParram("accepturl")})
     document.body.appendChild @wrapper
 
   showPopup: () ->
@@ -121,6 +120,10 @@ module.exports = class ProfactsModal
     unless @reqparams[key]?
       if key is "campaignkey" and @[key] is "profactscampaign"
         console.log "WARNING: every campaign should have a campaignkey. This key is used to create the modal cookies."
+
+      if key is "accepturl"
+        console.log "WARNING: You must provide a encoded accepturl."
+
       return @[key]
     else
       return @reqparams[key]

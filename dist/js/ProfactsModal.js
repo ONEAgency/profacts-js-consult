@@ -182,7 +182,9 @@ module.exports = ProfactsModal = (function() {
     template = this.getTemplate();
     this.wrapper = document.createElement("div");
     this.wrapper.id = "modal-wrapper";
-    this.wrapper.innerHTML = this.template();
+    this.wrapper.innerHTML = this.template({
+      accepturl: this.getRequestParram("accepturl")
+    });
     return document.body.appendChild(this.wrapper);
   };
 
@@ -294,6 +296,9 @@ module.exports = ProfactsModal = (function() {
     if (this.reqparams[key] == null) {
       if (key === "campaignkey" && this[key] === "profactscampaign") {
         console.log("WARNING: every campaign should have a campaignkey. This key is used to create the modal cookies.");
+      }
+      if (key === "accepturl") {
+        console.log("WARNING: You must provide a encoded accepturl.");
       }
       return this[key];
     } else {

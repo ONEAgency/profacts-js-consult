@@ -92,7 +92,7 @@ gulp.task "makemodal", ->
   .pipe gulp.dest paths.js
 
 gulp.task "minify", ->
-  gulp.src "modal.js"
+  gulp.src "#{paths.js}modal.js"
   .pipe jsmin()
   .pipe rename {suffix: ".min"}
   .pipe gulp.dest paths.js
@@ -128,14 +128,16 @@ gulp.task "browser-sync", ->
     server: "./"
     startPath: "example.html"
 
-
 # DEFAULT
-gulp.task "default", [
-  "coffee"
-  "scss"
-  "js"
-  #"minify-css"
-  #"minify-js"
-  "watch"
-  "browser-sync"
-]
+gulp.task "default", ->
+  runSequence(
+    "coffee"
+    "scss"
+    "jst"
+    "compileexecute"
+    "coffee"
+    "makemodal"
+    "minify"
+    "watch"
+    "browser-sync"
+  )

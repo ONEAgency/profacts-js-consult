@@ -92,7 +92,7 @@ gulp.task "makemodal", ->
   .pipe gulp.dest paths.js
 
 gulp.task "minify", ->
-  gulp.src "#{paths.js}modal.js"
+  gulp.src "#{paths.js}/modal.js"
   .pipe jsmin()
   .pipe rename {suffix: ".min"}
   .pipe gulp.dest paths.js

@@ -27,7 +27,8 @@
     "node-normalize-scss": "^1.0.3",
     "node-sass-json-importer": "^1.0.2",
     "query-string": "^3.0.0",
-    "run-sequence": "^1.1.4"
+    "run-sequence": "^1.1.4",
+    "underscore": "^1.8.3"
   },
   "engines": {
     "node": ">=0.8.0"
